@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import "./index.scss";
 
 const MyFlixApplication = () => {
-  retrun(
+  return (
     <div className="my-flix">
       <div>Good morning</div>
     </div>

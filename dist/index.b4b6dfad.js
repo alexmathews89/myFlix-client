@@ -2955,7 +2955,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
 var _indexScss = require("./index.scss");
 const MyFlixApplication = ()=>{
-    retrun(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "my-flix",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: "Good morning"
@@ -2968,7 +2968,7 @@ const MyFlixApplication = ()=>{
         fileName: "src/index.jsx",
         lineNumber: 6,
         columnNumber: 5
-    }, undefined));
+    }, undefined);
 };
 _c = MyFlixApplication;
 const container = document.querySelector("#root");
