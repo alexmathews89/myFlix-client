@@ -1,12 +1,20 @@
 import { useState } from "react";
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([
+    { id: 1, title: "Avatar" },
+    { id: 2, title: "Lord of the Rings" },
+    { id: 3, title: "Star Wars" },
+  ]);
+
+  if (movies.length === 0) {
+    return <div>The list is empty!</div>;
+  }
   return (
     <div>
-      <div>Avatar</div>
-      <div>Lord of the Rings</div>
-      <div>Star Wars</div>
+      {movies.map((movie) => {
+        return <div key={movie.id}>{movie.title}</div>;
+      })}
     </div>
   );
 };
