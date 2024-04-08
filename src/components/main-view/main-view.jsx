@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export const MainView = () => {
+  const [movies, setMovies] = useState([]);
   return (
     <div>
       <div>Avatar</div>
