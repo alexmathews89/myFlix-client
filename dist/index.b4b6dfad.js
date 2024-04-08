@@ -27358,8 +27358,8 @@ const MainView = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
-                onClick: ()=>{
-                    setSelectedMovie(movie);
+                onMovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
@@ -27423,13 +27423,16 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const MovieCard = (props)=>{
+const MovieCard = ({ movie, onMovieClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: props.movie.title
+        onClick: ()=>{
+            onMovieClick(movie);
+        },
+        children: movie.title
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 2,
-        columnNumber: 10
+        lineNumber: 3,
+        columnNumber: 5
     }, undefined);
 };
 _c = MovieCard;

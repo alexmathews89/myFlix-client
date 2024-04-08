@@ -39,8 +39,8 @@ export const MainView = () => {
         <MovieCard
           key={movie.id}
           movie={movie}
-          onClick={() => {
-            setSelectedMovie(movie);
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
           }}
         />
       ))}
