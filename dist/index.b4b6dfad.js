@@ -27322,22 +27322,28 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([
         {
             id: 1,
-            title: "Avatar"
+            title: "Avatar",
+            director: "James Cameron",
+            genre: "Science Fiction"
         },
         {
             id: 2,
-            title: "Lord of the Rings"
+            title: "Lord of the Rings",
+            director: "Peter Jackson",
+            genre: "Fantasy"
         },
         {
             id: 3,
-            title: "Star Wars"
+            title: "Star Wars",
+            director: "George Lucas",
+            genre: "Science Fiction"
         }
     ]);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 12,
+        lineNumber: 27,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27345,16 +27351,16 @@ const MainView = ()=>{
                 movie: movie
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 17,
+                lineNumber: 32,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 15,
+        lineNumber: 30,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "Ioe7B4d1Xe/oTxfGWWaToi6JsmM=");
+_s(MainView, "Z1MvuSlszMdvXGM6DzM1m4Udp5c=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

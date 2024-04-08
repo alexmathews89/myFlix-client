@@ -3,9 +3,24 @@ import { MovieCard } from "../movie-card/movie-card";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([
-    { id: 1, title: "Avatar" },
-    { id: 2, title: "Lord of the Rings" },
-    { id: 3, title: "Star Wars" },
+    {
+      id: 1,
+      title: "Avatar",
+      director: "James Cameron",
+      genre: "Science Fiction",
+    },
+    {
+      id: 2,
+      title: "Lord of the Rings",
+      director: "Peter Jackson",
+      genre: "Fantasy",
+    },
+    {
+      id: 3,
+      title: "Star Wars",
+      director: "George Lucas",
+      genre: "Science Fiction",
+    },
   ]);
 
   if (movies.length === 0) {
