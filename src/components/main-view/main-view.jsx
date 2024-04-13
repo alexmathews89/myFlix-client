@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
@@ -6,6 +6,22 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  useEffect(() => {
+    fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/movies")
+      .then((response) => response.json())
+      .then((data) => {
+        const moviesFromApi = data.map((movie) => {
+          return {
+            id: movie._id,
+            title: movie.Title,
+            director: movie.Director.Name,
+            genre: movie.Genre.Name,
+          };
+        });
+        setMovies(moviesFromApi);
+      });
+  }, []);
 
   if (selectedMovie) {
     return (
