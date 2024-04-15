@@ -32,27 +32,57 @@ export const MainView = () => {
 
   if (selectedMovie) {
     return (
-      <MovieView
-        movie={selectedMovie}
-        onBackClick={() => setSelectedMovie(null)}
-      />
+      <div>
+        <button
+          onClick={() => {
+            setUser(null);
+          }}
+        >
+          Logout
+        </button>
+
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
+        />
+      </div>
     );
   }
 
   if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return (
+      <div>
+        <button
+          onClick={() => {
+            setUser(null);
+          }}
+        >
+          Logout
+        </button>
+        <div>The list is empty!</div>
+      </div>
+    );
   }
   return (
     <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
-          }}
-        />
-      ))}
+      <button
+        onClick={() => {
+          setUser(null);
+        }}
+      >
+        Logout
+      </button>
+      <div>
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 };
