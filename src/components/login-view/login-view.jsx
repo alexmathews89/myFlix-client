@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export const LoginView = () => {
+export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (event) => {
@@ -15,6 +15,12 @@ export const LoginView = () => {
     fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/login", {
       method: "POST",
       body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        onLoggedIn(username);
+      } else {
+        alert("Login Failed");
+      }
     });
   };
 
