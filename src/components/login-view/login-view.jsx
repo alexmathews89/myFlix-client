@@ -8,12 +8,15 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password,
+      Username: username,
+      Password: password,
     };
 
     fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/login", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(data),
     }).then((response) => {
       if (response.ok) {
