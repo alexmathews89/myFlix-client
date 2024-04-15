@@ -10,7 +10,13 @@ export const MainView = () => {
 
   const [user, setUser] = useState(null);
 
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
+    if (!token) {
+      return;
+    }
+
     fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
@@ -27,7 +33,14 @@ export const MainView = () => {
   }, []);
 
   if (!user) {
-    return <LoginView onLoggedIn={(user) => setUser(user)} />;
+    return (
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+    );
   }
 
   if (selectedMovie) {
