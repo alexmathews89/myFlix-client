@@ -17,20 +17,14 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/movies")
+    fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
-        const moviesFromApi = data.map((movie) => {
-          return {
-            id: movie._id,
-            title: movie.Title,
-            director: movie.Director.Name,
-            genre: movie.Genre.Name,
-          };
-        });
-        setMovies(moviesFromApi);
+        console.log(data);
       });
-  }, []);
+  }, [token]);
 
   if (!user) {
     return (
