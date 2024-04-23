@@ -48,6 +48,11 @@ export const MainView = () => {
   if (selectedMovie) {
     return (
       <div>
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
+        />
+
         <button
           onClick={() => {
             setUser(null);
@@ -56,11 +61,6 @@ export const MainView = () => {
         >
           Logout
         </button>
-
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={() => setSelectedMovie(null)}
-        />
       </div>
     );
   }
