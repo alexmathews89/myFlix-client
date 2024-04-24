@@ -6,6 +6,10 @@
   padding: 4px 12px;
 }
 
+.justify-content-md-center {
+  text-align: center;
+}
+
 .my-flix {
   color: #4682b4;
 }
