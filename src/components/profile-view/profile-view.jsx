@@ -23,10 +23,10 @@ export const ProfileView = () => {
 
   return (
     <>
-      <span>Username:</span>
+      <span>Username: </span>
       <span>{user.Username}</span>
       <div>
-        <span>Email:</span>
+        <span>Email: </span>
         <span>{user.Email}</span>
       </div>
     </>
