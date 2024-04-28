@@ -13,7 +13,7 @@ export const MainView = () => {
   const storedToken = localStorage.getItem("token");
   const [movies, setMovies] = useState([]);
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  //const [selectedMovie, setSelectedMovie] = useState(null);
 
   const [user, setUser] = useState(storedUser ? storedUser : null);
 
@@ -33,79 +33,60 @@ export const MainView = () => {
       });
   }, [token]);
 
-  if (!user) {
-    return (
-      <div>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        <h4 className="or">or</h4>
-        <SignupView />
-      </div>
-    );
-  }
-
-  if (selectedMovie) {
-    return (
-      <Col md={10} style={{ border: "1px solid black" }}>
-        <div>
-          <MovieView
-            movie={selectedMovie}
-            onBackClick={() => setSelectedMovie(null)}
-          />
-
-          <button
-            onClick={() => {
-              setUser(null);
-              setToken(null);
-            }}
-          >
-            Logout
-          </button>
-        </div>
-      </Col>
-    );
-  }
-
-  if (movies.length === 0) {
-    return (
-      <div>
-        <button
-          onClick={() => {
-            setUser(null);
-            setToken(null);
-          }}
-        >
-          Logout
-        </button>
-        <div>The list is empty!</div>
-      </div>
-    );
-  }
   return (
-    <div>
-      <button
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-        }}
-      >
-        Logout
-      </button>
-      <div>
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie._id}
-            movie={movie}
-            onMovieClick={(newSelectedMovie) => {
-              setSelectedMovie(newSelectedMovie);
-            }}
-          />
-        ))}
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/signup"
+          element={<>{user ? <Navigate to="/" /> : <SignupView />}</>}
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              {user ? (
+                <Navigate to="/" />
+              ) : (
+                <LoginView onLoggedIn={(user) => setUser(user)} />
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/:movieID"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <div>The list is empty!</div>
+              ) : (
+                <Col md={10} style={{ border: "1px solid black" }}>
+                  <MovieView movies={movies} />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <div>The list is empty!</div>
+              ) : (
+                <>
+                  {movies.map((movie) => (
+                    <MovieCard movie={movie} />
+                  ))}
+                </>
+              )}
+            </>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 };
