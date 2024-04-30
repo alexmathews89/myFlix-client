@@ -27335,7 +27335,7 @@ const MainView = ()=>{
                             }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                 children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                         movie: movie
-                                    }, void 0, false, {
+                                    }, movie._id, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
                                         lineNumber: 92,
                                         columnNumber: 21

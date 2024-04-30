@@ -89,7 +89,7 @@ export const MainView = () => {
               ) : (
                 <>
                   {movies.map((movie) => (
-                    <MovieCard movie={movie} />
+                    <MovieCard key={movie._id} movie={movie} />
                   ))}
                 </>
               )}
