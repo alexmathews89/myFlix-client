@@ -27358,7 +27358,8 @@ const MainView = ()=>{
                                 lineNumber: 104,
                                 columnNumber: 17
                             }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
-                                user: user
+                                user: user,
+                                movies: movies
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
                                 lineNumber: 106,
@@ -42119,39 +42120,38 @@ parcelHelpers.export(exports, "ProfileView", ()=>ProfileView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _s = $RefreshSig$();
-const ProfileView = ()=>{
-    _s();
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
-    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
-    const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
-    (0, _react.useEffect)(()=>{
-        if (!token) return;
-        fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/users", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>response.json()).then((user)=>{
-            setUser(user);
-        });
-    }, [
-        token
-    ]);
+const ProfileView = ({ user, movies })=>{
+    //const storedUser = JSON.parse(localStorage.getItem("user"));
+    //const storedToken = localStorage.getItem("token");
+    //const [user, setUser] = useState(storedUser ? storedUser : null);
+    //const [token, setToken] = useState(storedToken ? storedToken : null);
+    let favoriteMovies = movies.filter((m)=>user.FavoriteMovies.includes(m._id));
+    //useEffect(() => {
+    //if (!token) {
+    //return;
+    //}
+    //fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/users", {
+    //headers: { Authorization: `Bearer ${token}` },
+    //})
+    //.then((response) => response.json())
+    //.then((user) => {
+    //setUser(user);
+    //});
+    //}, [token]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                 children: "Username: "
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 26,
+                lineNumber: 30,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                 children: user.Username
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 27,
+                lineNumber: 31,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42160,26 +42160,25 @@ const ProfileView = ()=>{
                         children: "Email: "
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 29,
+                        lineNumber: 33,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: user.Email
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 30,
+                        lineNumber: 34,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 28,
+                lineNumber: 32,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(ProfileView, "sSDa7750AGY//8trueq2Ults7HI=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
