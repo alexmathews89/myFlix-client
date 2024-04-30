@@ -8,6 +8,7 @@ export const ProfileView = ({ user, movies }) => {
   const [password, setPassword] = useState([]);
   const [email, setEmail] = useState([]);
   const handleSubmit = (event) => {
+    event.preventDefault();
     const data = {
       Username: username,
       Password: password,
@@ -76,6 +77,11 @@ export const ProfileView = ({ user, movies }) => {
           />
           <br />
           <button type="submit">Update</button>
+          <br />
+          <div>or</div>
+          <Link to={`/users/:Username`}>
+            <button>Delete my Account</button>
+          </Link>
         </form>
       </div>
       <br />
