@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const ProfileView = ({ user, movies }) => {
   //const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -6,7 +7,13 @@ export const ProfileView = ({ user, movies }) => {
   const [username, setUsername] = useState([]);
   const [password, setPassword] = useState([]);
   const [email, setEmail] = useState([]);
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+    };
+  };
 
   //const [token, setToken] = useState(storedToken ? storedToken : null);
 
@@ -71,6 +78,19 @@ export const ProfileView = ({ user, movies }) => {
           <button type="submit">Update</button>
         </form>
       </div>
+      <br />
+
+      <h3>Favorites:</h3>
+      {favoriteMovies.map((movies) => {
+        return (
+          <div key={movies._id}>
+            <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+              <h4>{movies.Title}</h4>
+              <button>Remove from Favorites</button>
+            </Link>
+          </div>
+        );
+      })}
     </>
   );
 };
