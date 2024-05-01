@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export const ProfileView = ({ user, movies }) => {
+export const ProfileView = ({ user, movies, token }) => {
   //const storedUser = JSON.parse(localStorage.getItem("user"));
   //const storedToken = localStorage.getItem("token");
   const [username, setUsername] = useState([]);
   const [password, setPassword] = useState([]);
   const [email, setEmail] = useState([]);
+  //const [token, setToken] = useState(storedToken ? storedToken : null);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
@@ -69,11 +70,7 @@ export const ProfileView = ({ user, movies }) => {
       <br />
 
       <div>
-        <form
-          onSubmit={(e) => {
-            handleSubmit;
-          }}
-        >
+        <form onSubmit={handleSubmit}>
           <h3>Update My Information</h3>
           <label>Username: </label>
           <input
