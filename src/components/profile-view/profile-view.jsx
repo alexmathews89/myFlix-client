@@ -14,6 +14,28 @@ export const ProfileView = ({ user, movies }) => {
       Password: password,
       Email: email,
     };
+
+    fetch(
+      `https://myflixapp-495f4f3fbc03.herokuapp.com/users/${user.Username}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((response) => response.json())
+      .then((updatedUser) => {
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+        setUser(updatedUser);
+        alert("User updated");
+      })
+      .catch((error) => {
+        alert("Something went wrong");
+        console.log(error);
+      });
   };
 
   //const [token, setToken] = useState(storedToken ? storedToken : null);
