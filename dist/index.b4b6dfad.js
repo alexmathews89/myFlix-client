@@ -27363,7 +27363,8 @@ const MainView = ()=>{
                                 columnNumber: 17
                             }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
                                 user: user,
-                                movies: movies
+                                movies: movies,
+                                token: token
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
                                 lineNumber: 111,
