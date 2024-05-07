@@ -45,20 +45,6 @@ export const ProfileView = ({ user, movies, token }) => {
     user.FavoriteMovies.includes(m._id)
   );
 
-  //useEffect(() => {
-  //if (!token) {
-  //return;
-  //}
-
-  //fetch("https://myflixapp-495f4f3fbc03.herokuapp.com/users", {
-  //headers: { Authorization: `Bearer ${token}` },
-  //})
-  //.then((response) => response.json())
-  //.then((user) => {
-  //setUser(user);
-  //});
-  //}, [token]);
-
   return (
     <>
       <span>Username: </span>
