@@ -50,7 +50,17 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
           Authorization: `Bearer ${token}`,
         },
       }
-    ).then((response) => response.json());
+    )
+      .then((response) => response.json())
+      .then((date) => {
+        setUser(null);
+        setToken(null);
+        localStorage.clear();
+      })
+      .catch((error) => {
+        alert("Something went wrong");
+        console.log(error);
+      });
   }
 
   //const [token, setToken] = useState(storedToken ? storedToken : null);
