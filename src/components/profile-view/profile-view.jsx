@@ -110,7 +110,7 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
           <br />
           <div>or</div>
           <Link to={`/users/:Username`}>
-            <button>Delete my Account</button>
+            <button onClick={deleteAccount}>Delete my Account</button>
           </Link>
         </form>
       </div>
