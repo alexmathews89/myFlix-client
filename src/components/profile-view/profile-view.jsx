@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, movies, token }) => {
+export const ProfileView = ({ user, movies, token, setUser }) => {
   //const storedUser = JSON.parse(localStorage.getItem("user"));
   //const storedToken = localStorage.getItem("token");
-  const [username, setUsername] = useState([]);
-  const [password, setPassword] = useState([]);
-  const [email, setEmail] = useState([]);
+  const [username, setUsername] = useState(user.Username);
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(user.Email);
+  console.log("user", user);
   //const [token, setToken] = useState(storedToken ? storedToken : null);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -39,6 +41,18 @@ export const ProfileView = ({ user, movies, token }) => {
       });
   };
 
+  function deleteAccount() {
+    fetch(
+      `https://myflixapp-495f4f3fbc03.herokuapp.com/users/${user.Username}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    ).then((response) => response.json());
+  }
+
   //const [token, setToken] = useState(storedToken ? storedToken : null);
 
   let favoriteMovies = movies.filter((m) =>
@@ -62,7 +76,7 @@ export const ProfileView = ({ user, movies, token }) => {
           <input
             type="text"
             name="username"
-            defaultValue={user.Username}
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
           <br />
@@ -70,14 +84,15 @@ export const ProfileView = ({ user, movies, token }) => {
           <input
             type="password"
             name="password"
-            onChage={(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <label>Email Address:</label>
           <input
             type="email"
             name="email"
-            defaultValue={user.Email}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <br />
@@ -92,14 +107,15 @@ export const ProfileView = ({ user, movies, token }) => {
       <br />
 
       <h3>Favorites:</h3>
-      {favoriteMovies.map((movies) => {
+      {favoriteMovies.map((movie) => {
         return (
-          <div key={movies._id}>
-            <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-              <h4>{movies.Title}</h4>
-              <button>Remove from Favorites</button>
-            </Link>
-          </div>
+          <MovieCard
+            key={movie._id}
+            movie={movie}
+            token={token}
+            user={user}
+            setUser={setUser}
+          />
         );
       })}
     </>

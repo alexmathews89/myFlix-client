@@ -94,7 +94,13 @@ export const MainView = () => {
               ) : (
                 <>
                   {movies.map((movie) => (
-                    <MovieCard key={movie._id} movie={movie} token={token} />
+                    <MovieCard
+                      key={movie._id}
+                      movie={movie}
+                      token={token}
+                      user={user}
+                      setUser={setUser}
+                    />
                   ))}
                 </>
               )}
@@ -108,7 +114,12 @@ export const MainView = () => {
               {!user ? (
                 <Navigate to="/login" replace />
               ) : (
-                <ProfileView user={user} movies={movies} token={token} />
+                <ProfileView
+                  user={user}
+                  movies={movies}
+                  token={token}
+                  setUser={setUser}
+                />
               )}
             </>
           }

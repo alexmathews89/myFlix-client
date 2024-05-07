@@ -3,7 +3,54 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, user, setUser, token }) => {
+  function addToFavorites() {
+    fetch(
+      `https://myflixapp-495f4f3fbc03.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((updatedUser) => {
+        console.log(updatedUser);
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+        setUser(updatedUser);
+        alert("User updated");
+      })
+      .catch((error) => {
+        alert("Something went wrong");
+        console.log(error);
+      });
+  }
+  function removeFromFavorites() {
+    fetch(
+      `https://myflixapp-495f4f3fbc03.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((updatedUser) => {
+        console.log(updatedUser);
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+        setUser(updatedUser);
+        alert("User updated");
+      })
+      .catch((error) => {
+        alert("Something went wrong");
+        console.log(error);
+      });
+  }
+
   return (
     <Card>
       <Card.Body>
@@ -11,9 +58,14 @@ export const MovieCard = ({ movie }) => {
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button variant="link">Open</Button>
         </Link>
-        <Link to={`/users/:Username/movies/${encodeURIComponent(movie._id)}`}>
-          <Button variant="link">Add to Favorites</Button>
-        </Link>
+        <div>
+          <Button variant="link" onClick={addToFavorites}>
+            Add to Favorites
+          </Button>
+          <Button variant="link" onClick={removeFromFavorites}>
+            Remove from Favorites
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );
