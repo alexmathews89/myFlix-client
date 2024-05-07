@@ -52,7 +52,7 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
       }
     )
       .then((response) => response.json())
-      .then((date) => {
+      .then((data) => {
         setUser(null);
         setToken(null);
         localStorage.clear();
