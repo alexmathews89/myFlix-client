@@ -36,14 +36,17 @@ export const MainView = () => {
       });
   }, [token]);
 
+  function onLoggedOut() {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  }
+
   return (
     <BrowserRouter>
       <NavigationBar
         user={user}
-        onLoggedOut={() => {
-          setUser(null);
-          setToken(null);
-        }}
+        onLoggedOut={onLoggedOut}
       />
       <Routes>
         <Route
@@ -119,6 +122,7 @@ export const MainView = () => {
                   movies={movies}
                   token={token}
                   setUser={setUser}
+                  onLoggedOut={onLoggedOut}
                 />
               )}
             </>
