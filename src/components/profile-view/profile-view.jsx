@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, movies, token, setUser }) => {
+export const ProfileView = ({ user, movies, token, setUser, onLoggedOut }) => {
   //const storedUser = JSON.parse(localStorage.getItem("user"));
   //const storedToken = localStorage.getItem("token");
   const [username, setUsername] = useState(user.Username);
@@ -41,7 +41,9 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
       });
   };
 
-  function deleteAccount() {
+  function deleteAccount(event) {
+    event.preventDefault();
+
     fetch(
       `https://myflixapp-495f4f3fbc03.herokuapp.com/users/${user.Username}`,
       {
@@ -53,9 +55,7 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setUser(null);
-        setToken(null);
-        localStorage.clear();
+        onLoggedOut();
       })
       .catch((error) => {
         alert("Something went wrong");

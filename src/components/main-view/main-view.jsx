@@ -122,6 +122,7 @@ export const MainView = () => {
                   movies={movies}
                   token={token}
                   setUser={setUser}
+                  onLoggedOut={onLoggedOut}
                 />
               )}
             </>
