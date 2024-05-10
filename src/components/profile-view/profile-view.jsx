@@ -65,7 +65,7 @@ export const ProfileView = ({ user, movies, token, setUser, onLoggedOut }) => {
 
   //const [token, setToken] = useState(storedToken ? storedToken : null);
 
-  let favoriteMovies = movies.filter((m) =>
+  let favoriteMovies = movies?.filter((m) =>
     user.FavoriteMovies.includes(m._id)
   );
 
