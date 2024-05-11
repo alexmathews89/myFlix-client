@@ -11,7 +11,19 @@ import "./main-view.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 
-function searchMovieTitle(movieTitle, movies) {}
+function searchMovieTitle(movieTitle, movies) {
+  if (!movieTitle) {
+    return;
+  }
+  const title = movieTitle;
+  const filteredMovies = movies.filter((movie) => {
+    return movie.Title.includes(title);
+  });
+  if (filteredMovies.length === 0) {
+    alert("No movie by that title");
+  }
+  return filteredMovies;
+}
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
