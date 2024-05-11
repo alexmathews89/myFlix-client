@@ -11,6 +11,8 @@ import "./main-view.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 
+function searchMovieTitle(movieTitle, movies) {}
+
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -44,10 +46,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <NavigationBar
-        user={user}
-        onLoggedOut={onLoggedOut}
-      />
+      <NavigationBar user={user} onLoggedOut={onLoggedOut} />
       <Routes>
         <Route
           path="/signup"
