@@ -35,7 +35,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
           </Nav>
           {user && (
             <form>
-              <input type="search" placeholder="Search Movie" />
+              <input type="search" placeholder="Search by Title" />
               <button>Search</button>
             </form>
           )}
