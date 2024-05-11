@@ -33,6 +33,12 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
               </>
             )}
           </Nav>
+          {user && (
+            <form>
+              <input type="search" placeholder="Search Movie" />
+              <button>Search</button>
+            </form>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
