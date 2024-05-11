@@ -52,6 +52,7 @@ export const SignupView = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
+                    placeholder="Must be 5 Characters"
                   />
                 </Form.Group>
                 <Form.Group controlId="formPassword">
