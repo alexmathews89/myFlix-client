@@ -79,41 +79,42 @@ export const ProfileView = ({ user, movies, token, setUser, onLoggedOut }) => {
         <span>{user.Email}</span>
       </div>
       <br />
-
-      <div className="update-form">
-        <form onSubmit={handleSubmit}>
-          <h3>Update My Information</h3>
-          <label>Username: </label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <br />
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <label>Email Address:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
-          <button type="submit">Update</button>
-          <br />
-          <div>or</div>
-          <div>
-            <button onClick={deleteAccount}>Delete my Account</button>
-          </div>
-        </form>
+      <div className="form-shadow">
+        <div className="update-form">
+          <form onSubmit={handleSubmit}>
+            <h3>Update My Information</h3>
+            <label>Username: </label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <br />
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <label>Email Address:</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <button type="submit">Update</button>
+            <br />
+            <div>or</div>
+            <div>
+              <button onClick={deleteAccount}>Delete my Account</button>
+            </div>
+          </form>
+        </div>
       </div>
       <br />
 
