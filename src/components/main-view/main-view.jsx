@@ -36,6 +36,10 @@ export const MainView = () => {
 
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
+  const onSearch = (movieTitle) => {
+    const result = searchMovieTitle(movieTitle, movies);
+  };
+
   useEffect(() => {
     if (!token) {
       return;
@@ -58,7 +62,11 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+      <NavigationBar
+        user={user}
+        onLoggedOut={onLoggedOut}
+        onSearch={onSearch}
+      />
       <Routes>
         <Route
           path="/signup"
