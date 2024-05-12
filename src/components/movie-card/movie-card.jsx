@@ -55,7 +55,7 @@ export const MovieCard = ({ movie, user, setUser, token }) => {
   return (
     <Card className="main-card">
       <Card.Body className="card">
-        <div className="background-color">
+        <div className="movie-background-color">
           <Card.Title>{movie.Title}</Card.Title>
           <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
             <Button variant="link">Open</Button>

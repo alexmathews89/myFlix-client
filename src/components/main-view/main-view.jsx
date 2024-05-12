@@ -72,12 +72,16 @@ export const MainView = () => {
       <Routes>
         <Route
           path="/signup"
-          element={<>{user ? <Navigate to="/" /> : <SignupView />}</>}
+          element={
+            <div className="background-color">
+              {user ? <Navigate to="/" /> : <SignupView />}
+            </div>
+          }
         />
         <Route
           path="/login"
           element={
-            <>
+            <div className="background-color">
               {user ? (
                 <Navigate to="/" />
               ) : (
@@ -88,7 +92,7 @@ export const MainView = () => {
                   }}
                 />
               )}
-            </>
+            </div>
           }
         />
         <Route
