@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
+  const [movieTitle, setMovieTitle] = useState("");
+
+  const searchMovie = () => {
+    onSearch(movieTitle);
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -36,7 +43,7 @@ export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
           {user && (
             <form>
               <input type="search" placeholder="Search by Title" />
-              <button>Search</button>
+              <button onClick={searchMovie}>Search</button>
             </form>
           )}
         </Navbar.Collapse>

@@ -35,9 +35,11 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
 
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [searchResult, setSearchResult] = useState([]);
 
   const onSearch = (movieTitle) => {
     const result = searchMovieTitle(movieTitle, movies);
+    setSearchResult(result);
   };
 
   useEffect(() => {
