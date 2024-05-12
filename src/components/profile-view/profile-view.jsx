@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
+import "./profile-view.scss";
 
 export const ProfileView = ({ user, movies, token, setUser, onLoggedOut }) => {
   //const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -79,7 +80,7 @@ export const ProfileView = ({ user, movies, token, setUser, onLoggedOut }) => {
       </div>
       <br />
 
-      <div>
+      <div className="update-form">
         <form onSubmit={handleSubmit}>
           <h3>Update My Information</h3>
           <label>Username: </label>
