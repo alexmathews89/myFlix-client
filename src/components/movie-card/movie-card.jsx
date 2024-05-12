@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./movie-card.scss";
 
 export const MovieCard = ({ movie, user, setUser, token }) => {
   function addToFavorites() {
@@ -52,8 +53,8 @@ export const MovieCard = ({ movie, user, setUser, token }) => {
   }
 
   return (
-    <Card>
-      <Card.Body>
+    <Card className="main-card">
+      <Card.Body className="card">
         <Card.Title>{movie.Title}</Card.Title>
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button variant="link">Open</Button>

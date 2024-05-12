@@ -9,7 +9,7 @@ export const MovieView = ({ movies }) => {
   const movie = movies.find((m) => m._id === movieID);
 
   return (
-    <div>
+    <div className="main-item">
       <Row className="justify-content-md-center">
         <div>
           <span>Title:</span>
