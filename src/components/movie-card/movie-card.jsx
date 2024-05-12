@@ -55,17 +55,19 @@ export const MovieCard = ({ movie, user, setUser, token }) => {
   return (
     <Card className="main-card">
       <Card.Body className="card">
-        <Card.Title>{movie.Title}</Card.Title>
-        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-          <Button variant="link">Open</Button>
-        </Link>
-        <div>
-          <Button variant="link" onClick={addToFavorites}>
-            Add to Favorites
-          </Button>
-          <Button variant="link" onClick={removeFromFavorites}>
-            Remove from Favorites
-          </Button>
+        <div className="background-color">
+          <Card.Title>{movie.Title}</Card.Title>
+          <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+            <Button variant="link">Open</Button>
+          </Link>
+          <div>
+            <Button variant="link" onClick={addToFavorites}>
+              Add to Favorites
+            </Button>
+            <Button variant="link" onClick={removeFromFavorites}>
+              Remove from Favorites
+            </Button>
+          </div>
         </div>
       </Card.Body>
     </Card>
