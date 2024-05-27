@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
   const [movieTitle, setMovieTitle] = useState("");
 
-  const searchMovie = () => {
+  const searchMovie = (movieTitle) => {
     onSearch(movieTitle);
   };
 
