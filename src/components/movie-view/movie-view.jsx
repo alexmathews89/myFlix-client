@@ -24,7 +24,7 @@ export const MovieView = ({ movies }) => {
         <span>Genre:</span>
         <span>{movie.Genre.Name}</span>
       </div>
-      <div>
+      <div className="image">
         <img src={movie.Image} />
       </div>
       <Link to={`/`}>
