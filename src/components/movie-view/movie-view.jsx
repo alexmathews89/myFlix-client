@@ -24,6 +24,9 @@ export const MovieView = ({ movies }) => {
         <span>Genre:</span>
         <span>{movie.Genre.Name}</span>
       </div>
+      <div>
+        <img src={movie.Image} />
+      </div>
       <Link to={`/`}>
         <button className="back-button">Back</button>
       </Link>
