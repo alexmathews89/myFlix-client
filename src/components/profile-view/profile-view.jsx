@@ -30,7 +30,10 @@ export const ProfileView = ({ user, movies, token, setUser, onLoggedOut }) => {
         body: JSON.stringify(data),
       }
     )
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        response.json();
+      })
       .then((updatedUser) => {
         localStorage.setItem("user", JSON.stringify(updatedUser));
         setUser(updatedUser);
@@ -54,9 +57,11 @@ export const ProfileView = ({ user, movies, token, setUser, onLoggedOut }) => {
         },
       }
     )
-      .then((response) => response.json())
-      .then((data) => {
-        onLoggedOut();
+      .then((response) => {
+        if (response.ok) {
+          alert("Account deleted successfully.");
+          onLoggedOut();
+        }
       })
       .catch((error) => {
         alert("Something went wrong");
