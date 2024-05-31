@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParams } from "react-router";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 export const NavigationBar = ({ user, onLoggedOut, onSearch, movies }) => {
   const [movieTitle, setMovieTitle] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  //const { movieID } = useParams();
-  //const movie = movies.find((m) => m._id === movieID);
 
   const navigate = useNavigate();
   const handleSearchChange = (e) => {
