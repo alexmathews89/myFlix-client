@@ -17,7 +17,7 @@ export const NavigationBar = ({ user, onLoggedOut, onSearch, movies }) => {
 
   const searchMovie = (searchTerm) => {
     onSearch(searchTerm);
-    navigate("/movies/" + movie._id);
+    navigate("/");
   };
 
   return (
