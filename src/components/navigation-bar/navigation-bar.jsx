@@ -1,12 +1,23 @@
 import { useState } from "react";
+import { useParams } from "react-router";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
+export const NavigationBar = ({ user, onLoggedOut, onSearch, movies }) => {
   const [movieTitle, setMovieTitle] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const { movieID } = useParams();
+  const movie = movies.find((m) => m._id === movieID);
 
-  const searchMovie = (movieTitle) => {
-    onSearch(movieTitle);
+  const navigate = useNavigate();
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const searchMovie = (searchTerm) => {
+    onSearch(searchTerm);
+    navigate("/movies/" + movie._id);
   };
 
   return (
@@ -42,7 +53,12 @@ export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
           </Nav>
           {user && (
             <form>
-              <input type="search" placeholder="Search by Title" />
+              <input
+                type="search"
+                placeholder="Search by Title"
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
               <button onClick={searchMovie}>Search</button>
             </form>
           )}

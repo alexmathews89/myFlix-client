@@ -69,6 +69,7 @@ export const MainView = () => {
         user={user}
         onLoggedOut={onLoggedOut}
         onSearch={onSearch}
+        movies={movies}
       />
       <Routes>
         <Route
