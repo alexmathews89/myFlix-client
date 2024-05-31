@@ -7,16 +7,16 @@ import { useNavigate } from "react-router-dom";
 export const NavigationBar = ({ user, onLoggedOut, onSearch, movies }) => {
   const [movieTitle, setMovieTitle] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const { movieID } = useParams();
-  const movie = movies.find((m) => m._id === movieID);
+  //const { movieID } = useParams();
+  //const movie = movies.find((m) => m._id === movieID);
 
   const navigate = useNavigate();
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+    setMovieTitle(e.target.value);
   };
 
-  const searchMovie = (searchTerm) => {
-    onSearch(searchTerm);
+  const searchMovie = (movieTitle) => {
+    onSearch(movieTitle);
     navigate("/");
   };
 
@@ -56,7 +56,7 @@ export const NavigationBar = ({ user, onLoggedOut, onSearch, movies }) => {
               <input
                 type="search"
                 placeholder="Search by Title"
-                value={searchTerm}
+                value={movieTitle}
                 onChange={handleSearchChange}
               />
               <button onClick={searchMovie}>Search</button>
