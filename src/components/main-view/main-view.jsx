@@ -115,14 +115,16 @@ export const MainView = () => {
                 <div>The list is empty!</div>
               ) : (
                 <>
-                  <Col className="search-entry" md={12}>
-                    <input
-                      type="text"
-                      value={searchKey}
-                      onChange={handleSearch}
-                      placeholder="Search movies..."
-                    />
-                  </Col>
+                  <div className="search-bar">
+                    <Col className="search-entry" md={12}>
+                      <input
+                        type="text"
+                        value={searchKey}
+                        onChange={handleSearch}
+                        placeholder="Search movies..."
+                      />
+                    </Col>
+                  </div>
                   {filteredMovies.map((movie) => (
                     <MovieCard
                       key={movie._id}
