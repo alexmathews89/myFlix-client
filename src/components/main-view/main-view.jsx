@@ -10,37 +10,20 @@ import Col from "react-bootstrap/Col";
 import "./main-view.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
-
-function searchMovieTitle(movieTitle, movies) {
-  if (!movieTitle) {
-    return;
-  }
-  const title = movieTitle;
-  const filteredMovies = movies.filter((movie) => {
-    return movie.Title.includes(title);
-  });
-  if (filteredMovies.length === 0) {
-    alert("No movie by that title");
-  }
-  return filteredMovies;
-}
+import { debounce } from "lodash";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [searchKey, setSearchKey] = useState("");
 
   //const [selectedMovie, setSelectedMovie] = useState(null);
 
   const [user, setUser] = useState(storedUser ? storedUser : null);
 
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [searchResult, setSearchResult] = useState([]);
-
-  const onSearch = (movieTitle) => {
-    const result = searchMovieTitle(movieTitle, movies);
-    setSearchResult(result);
-  };
 
   useEffect(() => {
     if (!token) {
@@ -53,6 +36,7 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((movies) => {
         setMovies(movies);
+        setFilteredMovies(movies);
       });
   }, [token]);
 
@@ -63,14 +47,22 @@ export const MainView = () => {
     window.location.reload();
   }
 
+  // Code to handle a search input
+  const handleSearch = (search) => {
+    setSearchKey(search.target.value);
+    movieSearch(search.target.value);
+  };
+
+  const movieSearch = debounce((searchKey) => {
+    const tempMovieFilter = movies.filter((movie) => {
+      return movie.Title.toLowerCase().includes(searchKey.toLowerCase());
+    });
+    setFilteredMovies(tempMovieFilter);
+  }, 400);
+
   return (
     <BrowserRouter>
-      <NavigationBar
-        user={user}
-        onLoggedOut={onLoggedOut}
-        onSearch={onSearch}
-        movies={movies}
-      />
+      <NavigationBar user={user} onLoggedOut={onLoggedOut} />
       <Routes>
         <Route
           path="/signup"
@@ -119,11 +111,19 @@ export const MainView = () => {
             <>
               {!user ? (
                 <Navigate to="/login" replace />
-              ) : movies.length === 0 ? (
+              ) : filteredMovies.length === 0 ? (
                 <div>The list is empty!</div>
               ) : (
                 <>
-                  {movies.map((movie) => (
+                  <Col className="search-entry" md={12}>
+                    <input
+                      type="text"
+                      value={searchKey}
+                      onChange={handleSearch}
+                      placeholder="Search movies..."
+                    />
+                  </Col>
+                  {filteredMovies.map((movie) => (
                     <MovieCard
                       key={movie._id}
                       movie={movie}
